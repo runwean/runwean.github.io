@@ -1,67 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人介绍</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 新增CSS样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            /* 使用伪元素添加半透明背景图片 */
+            position: relative;
+            overflow: hidden; /* 防止伪元素溢出 */
+            min-height: 100vh; /* 确保body至少占据视口的高度 */
+        }
 
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://raw.githubusercontent.com/runwean/runwean.github.io/main/cafe.jpeg");
+            background-size: cover;
+            background-position: center;
+            /* 设置背景图片透明度 */
+            opacity: 1;
+            z-index: -1; /* 将伪元素置于内容之下 */
+        }
+
+        /*#bigbox {*/
+        /*    text-align: center; !* 水平居中内容 *!*/
+        /*    padding: 50px 0; !* 为内容添加上下内边距 *!*/
+        /*}*/
+
+        #bigbox {
+            display: flex;            /* 启用Flexbox布局 */
+            flex-direction: column;   /* 子元素垂直排列 */
+            justify-content: center; /* 在垂直方向上居中子元素 */
+            align-items: center;     /* 在水平方向上居中子元素（虽然text-align已经足够，但这里可以保持一致） */
+            height: 100vh;           /* 设置容器高度为视口高度，确保内容可以垂直居中 */
+            padding: 0;              /* 移除原有的内边距，因为我们会用Flexbox来居中内容 */
+        }
+
+        .text-with-bg {
+            display: inline-block; /* 使得背景色仅应用于文本及其内边距 */
+            padding: 20px; /* 为文本添加统一的内边距 */
+            /*background-color: white; !* 白色底纹背景 *!*/
+            background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50% 透明度 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+            line-height: 1.8; /* 调整行间距 */
+            margin: 10px 0; /* 添加外边距以分隔各个块 */
+            width: 80%; /* 设置宽度为父元素宽度的80% */
+            max-width: 250px; /* 可选：设置最大宽度，防止在宽屏设备上过于宽大 */
+            /*box-sizing: border-box; !* 确保width和height包括padding和border *!*/
+            a {
+                text-decoration: none;
+            }
+        }
+
+    </style>
 </head>
-
 <body>
-  
-  
-  <div style="position:relative;">
-
-　　<img src="https://wallpapercave.com/wp/wp8744336.jpg" height="1000" width="1500" />
-
-　　<div style="position:absolute; z-index:10; left:100px; top:20px">
-    <div id="bigbox">
-        <div id="banner">
-            <img src="picture/banner.png" alt="">
-        </div>
-        <div id="main">
-            <div id="main_left">
-               <h2>About me</h2>
-                <img src="picture/me.png" alt="">
-                <p>
-                    <span>Name</span>:Wayne Yuan<br>
-                    <span>Hobby</span>:跑步<br>
-                    <span>Personality</span> :ENTJ<br>
-                    <span>Home</span>:北京 朝阳<br>
-                </p>
-            </div>
-            <div id="main_right">
-                <h2>一些话</h2>
-                <p>
-                    “
-                </p>
-                <p>
-                    “村上春树
-                </p>
-                <p>
-                    作家（兼跑者）
-                </p>
-                <p>
-                    1949---20XX
-                </p>
-                <p>
-                    他至少是跑到了最后
-                </p>
-                <p>
-                    ”
-                </p>
-                <p>
-                    -- 村上春树给自己的墓志铭
-                </p>
-            </div>
-        <footer>
-            <p>
-                Thanks
-            </p>
-        </footer>
+  <div id="bigbox">
+    <div class="text-with-bg" style="text-align: center;">
+      <h2>About me</h2>
+      <p>
+        <span>Name</span>: Wayne Yuan<br>
+        <span>Hobby</span>: 跑步<br>
+        <span>Personality</span>: ENTJ<br>
+        <span>Home</span>: 北京 朝阳<br>
+          <a href="https://github.com/runwean">
+            <span style="color: black; font-weight: normal; text-decoration: none;">code: </span>
+            github
+        </a>
+        </p>
     </div>
+    <div class="text-with-bg" style="text-align: center;">
+      <h2>一些话</h2>
+        <p>“村上春树</p>
+      <p>作家（兼跑者）</p>
+      <p>1949---20XX</p>
+      <p>他至少是跑到了最后</p>
+      <p>”</p>
+    </div>
+  </div>
 </body>
 </html>
